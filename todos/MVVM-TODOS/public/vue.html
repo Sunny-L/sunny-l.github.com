@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js todos</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/global.css">
+</head>
+
+<body id="demo">
+    <h1 class="text-center">Vue.js TODOS</h1>
+    <div class="wrap container">
+        <form action="index.html" method="post" class="form-horizontal">
+            <div class="form-group search-wrap">
+                <label for="" class="col-md-1 control-label">搜索</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" v-model="query">
+                </div>
+            </div>
+        </form>
+
+        <grid :data.sync="girdData" :query="query"></grid>
+
+    </div>
+</body>
+<script type="text/x-template" id="grid-template">
+    <table class="table data-list table-hover">
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th><a href="javascript:void(0);" @click="sort('price')">价格<span class="arrow" :class="sortOrders.price>0?'asc':'dsc'"></span></a></th>
+                <th><a href="javascript:void(0);" @click="sort('volume')">销量<span class="arrow" :class="sortOrders.volume>0?'asc':'dsc'"></span></a></th>
+                <th width=270>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="goods in data | filterBy query | orderBy sortKey sortOrders[sortKey]">
+                <td>
+                    <input type="text" value="{{goods.title}}" v-model="goods.title" :class="goods.isEdit ? '':'hide';" @blur="handleSave($index)" @keyup.enter="handleSave($index)" />
+                    <span v-bind:class="goods.isEdit?'hide':'';" @dblclick="handleUpdate($index)">{{goods.title}}</span>
+                </td>
+                <td>&yen;{{goods.price}}</td>
+                <td>{{goods.volume}}件</td>
+                <td>
+                    <button type="button" class="btn btn-danger" @click="handleDelete(goods)">删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+            新增
+        </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    添加商品
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" v-model="newGoods.title" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">价格</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" v-model="newGoods.price" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" @click="handleAdd()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/vue/1.0.10/vue.min.js"></script>
+<script src="./js/store.js"></script>
+<script src="./js/vue/app.js"></script>
+
+</html>

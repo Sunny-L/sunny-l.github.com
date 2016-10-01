@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="goodsApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Angualar.js todos</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/global.css">
+</head>
+
+<body>
+    <h1 class="text-center">Angualar.js TODOS</h1>
+    <div class="wrap container" ng-controller="listCtrl">
+        <form action="index.html" method="post" class="form-horizontal">
+            <div class="form-group search-wrap">
+                <label for="" class="col-md-1 control-label">搜索</label>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" value="" ng-model="query">
+                </div>
+            </div>
+        </form>
+
+        <table class="table data-list table-hover">
+            <thead>
+                <tr>
+                    <th>名称</th>
+                    <th><a href="javascript:void(0);" ng-click="sort('price')">价格<span class="arrow" ng-class="sortKeys.price?'asc':'dsc'"></span></a></th>
+                    <th><a href="javascript:void(0);" ng-click="sort('volume')">销量<span class="arrow" ng-class="sortKeys.volume?'asc':'dsc'"></span></a></th>
+                    <th width=270>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="goods in list | filter:query track by $index">
+                    <td>
+                        <input type="text" value="{{goods.title}}" ng-model="goods.title" style="display:{{goods.isEdit?'block':'none'}};" ng-blur="handleSave($index)" />
+                        <span style="display:{{goods.isEdit?'none':'block'}};" ng-dblclick="handleUpdate($index)">{{goods.title}}</span>
+                    </td>
+                    <td>
+                        <input type="text" value="{{goods.price}}" ng-model="goods.price" style="display:{{goods.isEdit?'block':'none'}};width:60px;" ng-blur="handleSave($index)" />
+                        <span style="display:{{goods.isEdit?'none':'block'}};" ng-dblclick="handleUpdate($index)">&yen;{{goods.price}}</span>
+                    </td>
+                    <td>{{goods.volume}}件</td>
+                    <td>
+                        <button type="button" class="btn btn-danger" ng-click="handleDelete($index)">删除</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+                新增
+            </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="newGoods.title" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">价格</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" ng-model="newGoods.price" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary" ng-click="handleAdd()">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+<script src="./js/store.js"></script>
+<script src="./js/angular/controllers.js"></script>
+<script src="./js/angular/app.js"></script>
+<script>
+</script>
+
+</html>

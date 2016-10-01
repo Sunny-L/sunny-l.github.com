@@ -1,0 +1,16 @@
+header{height: 100px;background: #d7d7d7;}
+.floor{height: 500px;background: green;margin-bottom: 20px;}
+.stickem{
+	font-size: 24px;
+	font-weight: bold;
+	color: #fff;
+	position:absolute;
+	height: 100px;
+	background: red;
+	line-height: 100px;
+	width: 1140px;
+	top:-50px;
+	opacity: 0;
+	transition:all 0.3s;
+}
+.stickit{display:block;position: fixed;top:0;z-index: 999;opacity: 1;transition:all 0.3s;}

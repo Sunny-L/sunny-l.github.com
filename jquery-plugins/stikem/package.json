@@ -1,0 +1,27 @@
+{
+  "name": "stikem",
+  "version": "1.0.0",
+  "description": "1、载入插件",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sunny-L/stikem.git"
+  },
+  "keywords": [
+    "stickem"
+  ],
+  "author": "Sunny-L",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sunny-L/stikem/issues"
+  },
+  "homepage": "https://github.com/Sunny-L/stikem#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.4.1"
+  }
+}
