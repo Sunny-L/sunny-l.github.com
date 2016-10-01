@@ -1,0 +1,42 @@
+a{text-decoration: none;}
+#ss-imgbox{width:550px;margin: 0 auto;margin-top: 100px;}
+.ss-thumbnail {
+	float:left;
+	margin-right: 5px;
+	border:2px solid #f2f2f2;
+	-webkit-transition-duration:0.3s;
+	transition-duration: 0.3s;
+}
+.ss-thumbnail img{width:80px;height: 80px;}
+.ss-thumbnail{cursor: url(images/iconfont-fangda.png),auto;}
+.ss-thumbnail-current{border: 2px solid #f40;cursor: url(images/iconfont-suoxiao.png),auto;}
+.ss-thumbnail:hover{border: 2px solid #f40;}
+.ss-options{width:250px;padding:10px 5px;}
+#ss-options div{float: left;}
+.ss-display{position: relative;display:none;border: 1px solid #ccc;padding: 5px;}
+.ss-display img{display: block;}
+.ss-prev{width: 50%;height: 90%;position: absolute;left: 0;cursor: pointer;display: block;}
+.ss-next{width: 50%;height:90%;position: absolute;right: 0;cursor: pointer;display: block;}
+.ss-next i{display:none;background: url(images/iconfont-next.png) no-repeat;width: 32px;height: 32px;position: absolute;right: 20px;top:50%;margin-top: -10px;}
+.ss-prev i{display:none;background: url(images/iconfont-prev.png) no-repeat;width: 32px;height: 32px;position: absolute;left: 20px;top:50%;margin-top: -10px;}
+.ss-next:hover i{display: block;}
+.ss-prev:hover i{display: block;}
+.ss-close{background: url(images/iconfont-shouqi.png) no-repeat;padding-left: 18px;cursor: pointer;}
+.ss-o-img{background: url(images/iconfont-datu.png) no-repeat;padding-left: 18px;cursor: pointer;}
+.ss-sinistrogyration{background: url(images/iconfont-zuoxuan.png) no-repeat;padding-left: 18px;cursor: pointer;}
+.ss-dextrorotation{background: url(images/iconfont-youxuan.png) no-repeat;padding-left: 18px;cursor: pointer;}
+.ss-rotating-1{
+	transform:rotate(90deg);
+	-ms-filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+	filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+.ss-rotating-2{
+	transform:rotate(180deg);
+	-ms-filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+	filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+.ss-rotating-3{
+	transform:rotate(270deg);
+	-ms-filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+	filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
